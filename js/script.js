@@ -10,18 +10,23 @@ function Book(title, author, pages, progress) {
 }
 
 function getBook() {
-    bookTitle = titleInput.value;
-    bookAuthor = authorInput.value;
-    bookPages = pagesInput.value;
-    bookProgress = progressInput.value;
-    let newBook = new Book(bookTitle, bookAuthor, bookPages, bookProgress)
-    bookList.push(newBook);
+    if (bookTitle == null || bookAuthor == null || bookPages == null || bookProgress || null) {
+        return
+    } else {
+        bookTitle = titleInput.value;
+        bookAuthor = authorInput.value;
+        bookPages = pagesInput.value;
+        bookProgress = progressInput.value;
+        let newBook = new Book(bookTitle, bookAuthor, bookPages, bookProgress)
+        bookList.push(newBook);
+    }
 }
 
 let titleInput = document.getElementById('book-title');
 let authorInput = document.getElementById('book-author');
 let pagesInput = document.getElementById('book-pages');
 let progressInput = document.getElementById('book-progress');
+let addBookButton = document.getElementById('add-book-button');
 
 let bookTitle = null;
 let bookAuthor = null;
@@ -30,3 +35,4 @@ let bookProgress = 0;
 
 let bookList = [];
 
+addBookButton.addEventListener('click', getBook())
