@@ -1,0 +1,7 @@
+.library-main {
+    width: 100vw;
+    height: 80vvh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+}

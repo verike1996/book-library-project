@@ -23,24 +23,30 @@ function resetValues() {
     bookAuthor = null;
     bookPages = 0;
     bookProgress = 0;
-    bookStatus = null;
+    bookStatus = null;   
+    titleInput.value = '';
+    authorInput.value = '';
+    pagesInput.value = '';
+    progressInput.value = '';
+    completedStatus.checked = '';
 }
 
 function insertBook() {
-    libraryMain.innerHTML = `<h1>${bookList[0].title}</h1>`
+    let newHTML = `<h1>${bookList[0].title}</h1>`;
+    libraryMain.insertAdjacentElement(newHTML, libraryMain);
 }
 
 function getBook() {
     getValues();
-    if (isNaN(bookPages) || isNaN(bookProgress)) {
+    if (bookTitle == '' || bookAuthor ==  '' || bookPages == '' || bookProgress == '') {
+        alert('You must have values in each input field');
+    } else if (isNaN(bookPages) || isNaN(bookProgress)) {
         alert('You must enter numbers for Book Pages or Pages Read');
-    } else if (bookTitle == null || bookAuthor == null || bookPages == null || bookProgress == null) {
-        alert('You must have values in each input field')
     } else {
         let newBook = new Book(bookTitle, bookAuthor, bookPages, bookProgress, bookStatus);
         bookList.unshift(newBook);
         resetValues();
-        insertBook();
+        addBookToDOM();
     }
 }
 
@@ -60,4 +66,28 @@ let bookStatus = null;
 
 let bookList = [];
 
-addBookButton.addEventListener('click', event => {getBook()})
+addBookButton.addEventListener('click', event => {getBook()});
+
+
+// playground
+
+function addBookToDOM() {
+    let bookElement = document.createElement("div");
+    bookElement.setAttribute('class', 'library-book');
+    let bookElementTitle = document.createElement('span');
+    bookElementTitle.appendChild(document.createTextNode(`${bookList[0].title}`));
+
+    let bookElementAuthor = document.createElement('span');
+    bookElementAuthor.appendChild(document.createTextNode(`${bookList[0].author}`));
+
+    let bookElementPages = document.createElement('span');
+    bookElementPages.appendChild(document.createTextNode(`${bookList[0].pages}`));
+
+    let bookElementProgress = document.createElement('span');
+    bookElementProgress.appendChild(document.createTextNode(`${bookList[0].progress}`));
+
+    bookElement.appendChild(bookElementTitle);
+    bookElement.appendChild(bookElementAuthor);
+    bookElement.appendChild(bookElementPages);        bookElement.appendChild(bookElementProgress);
+    libraryMain.appendChild(bookElement);
+}
