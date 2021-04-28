@@ -74,16 +74,16 @@ addBookButton.addEventListener('click', event => {getBook()});
 function addBookToDOM() {
     let bookElement = document.createElement("div");
     bookElement.setAttribute('class', 'library-book');
-    let bookElementTitle = document.createElement('span');
+    let bookElementTitle = document.createElement('h2');
     bookElementTitle.appendChild(document.createTextNode(`${bookList[0].title}`));
 
-    let bookElementAuthor = document.createElement('span');
+    let bookElementAuthor = document.createElement('h3');
     bookElementAuthor.appendChild(document.createTextNode(`${bookList[0].author}`));
 
-    let bookElementPages = document.createElement('span');
+    let bookElementPages = document.createElement('p');
     bookElementPages.appendChild(document.createTextNode(`${bookList[0].pages}`));
 
-    let bookElementProgress = document.createElement('span');
+    let bookElementProgress = document.createElement('p');
     bookElementProgress.appendChild(document.createTextNode(`${bookList[0].progress}`));
 
     bookElement.appendChild(bookElementTitle);
