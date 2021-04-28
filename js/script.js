@@ -26,6 +26,10 @@ function resetValues() {
     bookStatus = null;
 }
 
+function insertBook() {
+    libraryMain.innerHTML = `<h1>${bookList[0].title}</h1>`
+}
+
 function getBook() {
     getValues();
     if (isNaN(bookPages) || isNaN(bookProgress)) {
@@ -36,6 +40,7 @@ function getBook() {
         let newBook = new Book(bookTitle, bookAuthor, bookPages, bookProgress, bookStatus);
         bookList.unshift(newBook);
         resetValues();
+        insertBook();
     }
 }
 
@@ -45,6 +50,7 @@ let pagesInput = document.getElementById('book-pages');
 let progressInput = document.getElementById('book-progress');
 let addBookButton = document.getElementById('add-book-button');
 let completedStatus = document.getElementById('completed-status');
+let libraryMain = document.getElementById('library-main');
 
 let bookTitle = null;
 let bookAuthor = null;
