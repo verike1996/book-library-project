@@ -4,10 +4,6 @@ function Book(title, author, pages, progress, status) {
     this.pages = pages
     this.progress = progress
     this.status = status
-    // this.readYet = readYet
-    // this.info = function() {
-    //     return`${this.title} by ${this.author}, ${this.pages} pages, ${this.readYet}`;
-    // }
 }
 
 function getValues() {
@@ -16,6 +12,16 @@ function getValues() {
     bookPages = pagesInput.value;
     bookProgress = progressInput.value;
     bookStatus = completedStatus.checked;
+}
+
+function showForm() {
+    bookAddForm.classList.add('show-form');
+    bookAddForm.classList.remove('hide-form');
+}
+
+function hideForm() {
+    bookAddForm.classList.remove('show-form');
+    bookAddForm.classList.remove('show-form');
 }
 
 function resetValues() {
@@ -31,7 +37,7 @@ function resetValues() {
     completedStatus.checked = '';
 }
 
-function addBookCard() {
+function insertBook() {
     let bookElement = document.createElement("div");
     bookElement.setAttribute('class', 'library-book');
     bookElement.setAttribute('id', `${idNumber}`);
@@ -51,10 +57,6 @@ function addBookCard() {
     let bookElementButton = document.createElement('button');
     bookElementButton.setAttribute('class', 'removal-button');
     bookElementButton.appendChild(document.createTextNode(`Remove Book`));
-}
-
-function insertBook() {
-    addBookCard();
 
     bookElementButton.addEventListener('click', event => {
         let parentOfBook = bookElementButton.parentNode;
@@ -95,7 +97,10 @@ let progressInput = document.getElementById('book-progress');
 let addBookButton = document.getElementById('add-book-button');
 let completedStatus = document.getElementById('completed-status');
 let libraryMain = document.getElementById('library-main');
+let newBookButton = document.getElementById('new-book');
 let removalButtons = document.querySelectorAll('.removal-button');
+
+let bookAddForm = document.querySelector('.add-book-card');
 
 let bookTitle = null;
 let bookAuthor = null;
@@ -106,7 +111,12 @@ let idNumber = 0;
 
 let bookList = [];
 
-addBookButton.addEventListener('click', event => {getBook()});
-
+addBookButton.addEventListener('click', event => {
+    getBook();
+    hideForm();
+});
+newBookButton.addEventListener('click', event => {
+    showForm();
+});
 // playground
 
