@@ -9,17 +9,24 @@
 </head>
 <body>
     <button id="new-book">New Book</button>
-    <div class="add-book-card">
+    <div class="add-book-card show-form">
         <form action="">
-            <label for="book-title">Book Title</label>
-            <input type="text" name="book-title" id="book-title">
-            <label for="book-author">Book Author</label>
-            <input type="text" name="book-author" id="book-author">
-            <label for="book-pages">Total Book Pages</label>
-            <input type="text" name="book-pages" id="book-pages">
-            <label for="book-progress">Total Book Pages Read</label>
-            <input type="text" name="book-progress" id="book-progress">
-            <input type="checkbox" name="completed-status" id="completed-status">
+            <div class="form-item-wrapper">
+                <label for="book-title">Book Title</label>
+                <input type="text" name="book-title" id="book-title">
+            </div>
+            <div class="form-item-wrapper">
+                <label for="book-author">Book Author</label>
+                <input type="text" name="book-author" id="book-author">
+            </div>
+            <div class="form-item-wrapper">
+                <label for="book-pages">Total Book Pages</label>
+                <input type="text" name="book-pages" id="book-pages">
+            </div>
+            <div class="form-item-wrapper">
+                <label for="book-progress">Total Book Pages Read</label>
+                <input type="text" name="book-progress" id="book-progress">
+            </div>
         </form>
         <button id="add-book-button">Add</button>
     </div>
@@ -34,6 +41,8 @@
         
 
     </div>
+    <button id="show">show</button>
+    <button id="hide">hide</button>
     <script src="js/script.js"></script>
 </body>
 </html>

@@ -12,9 +12,22 @@
 }
 
 .add-book-card {
-    color:orange;
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    background-color: purple;
+}
+
+.hide-form {
+    display: none;
 }
 
 .show-form {
-    background-color: red;
+    position: absolute;
+    display: display;
+}
+
+.form-item-wrapper {
+    display: flex;
+    justify-content: space-between;
 }

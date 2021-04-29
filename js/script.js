@@ -11,7 +11,6 @@ function getValues() {
     bookAuthor = authorInput.value;
     bookPages = pagesInput.value;
     bookProgress = progressInput.value;
-    bookStatus = completedStatus.checked;
 }
 
 function showForm() {
@@ -20,7 +19,7 @@ function showForm() {
 }
 
 function hideForm() {
-    bookAddForm.classList.remove('show-form');
+    bookAddForm.classList.add('hide-form');
     bookAddForm.classList.remove('show-form');
 }
 
@@ -34,7 +33,6 @@ function resetValues() {
     authorInput.value = '';
     pagesInput.value = '';
     progressInput.value = '';
-    completedStatus.checked = '';
 }
 
 function insertBook() {
@@ -95,7 +93,6 @@ let authorInput = document.getElementById('book-author');
 let pagesInput = document.getElementById('book-pages');
 let progressInput = document.getElementById('book-progress');
 let addBookButton = document.getElementById('add-book-button');
-let completedStatus = document.getElementById('completed-status');
 let libraryMain = document.getElementById('library-main');
 let newBookButton = document.getElementById('new-book');
 let removalButtons = document.querySelectorAll('.removal-button');
@@ -120,3 +117,12 @@ newBookButton.addEventListener('click', event => {
 });
 // playground
 
+
+let show = document.getElementById('show');
+show.addEventListener('click', event => {
+    showForm();
+});
+let hide = document.getElementById('hide')
+hide.addEventListener('click', event => {
+    hideForm();
+});
