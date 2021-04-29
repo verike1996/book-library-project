@@ -32,48 +32,10 @@ function resetValues() {
 }
 
 function insertBook() {
-    let newHTML = `<h1>${bookList[0].title}</h1>`;
-    libraryMain.insertAdjacentElement(newHTML, libraryMain);
-}
-
-function getBook() {
-    getValues();
-    if (bookTitle == '' || bookAuthor ==  '' || bookPages == '' || bookProgress == '') {
-        alert('You must have values in each input field');
-    } else if (isNaN(bookPages) || isNaN(bookProgress)) {
-        alert('You must enter numbers for Book Pages or Pages Read');
-    } else {
-        let newBook = new Book(bookTitle, bookAuthor, bookPages, bookProgress, bookStatus);
-        bookList.unshift(newBook);
-        resetValues();
-        addBookToDOM();
-    }
-}
-
-let titleInput = document.getElementById('book-title');
-let authorInput = document.getElementById('book-author');
-let pagesInput = document.getElementById('book-pages');
-let progressInput = document.getElementById('book-progress');
-let addBookButton = document.getElementById('add-book-button');
-let completedStatus = document.getElementById('completed-status');
-let libraryMain = document.getElementById('library-main');
-
-let bookTitle = null;
-let bookAuthor = null;
-let bookPages = 0;
-let bookProgress = 0;
-let bookStatus = null;
-
-let bookList = [];
-
-addBookButton.addEventListener('click', event => {getBook()});
-
-
-// playground
-
-function addBookToDOM() {
     let bookElement = document.createElement("div");
     bookElement.setAttribute('class', 'library-book');
+    bookElement.setAttribute('id', `${idNumber}`);
+
     let bookElementTitle = document.createElement('h2');
     bookElementTitle.appendChild(document.createTextNode(`${bookList[0].title}`));
 
@@ -86,8 +48,62 @@ function addBookToDOM() {
     let bookElementProgress = document.createElement('p');
     bookElementProgress.appendChild(document.createTextNode(`${bookList[0].progress}`));
 
+    let bookElementButton = document.createElement('button');
+    bookElementButton.setAttribute('class', 'removal-button');
+    bookElementButton.appendChild(document.createTextNode(`Remove Book`));
+
+    bookElementButton.addEventListener('click', event => {
+        let parentOfBook = bookElementButton.parentNode;
+        parentOfBook.parentNode.removeChild(bookElement);
+    });
+
+    // Add a pop up that asks if thehy're sure they want to remove the book. if statements with true false
+
     bookElement.appendChild(bookElementTitle);
     bookElement.appendChild(bookElementAuthor);
     bookElement.appendChild(bookElementPages);        bookElement.appendChild(bookElementProgress);
+    bookElement.appendChild(bookElementButton)
     libraryMain.appendChild(bookElement);
 }
+
+function test(e) {
+    console.log(e.parentNode.id);
+}
+
+function getBook() {
+    getValues();
+    if (bookTitle == '' || bookAuthor ==  '' || bookPages == '' || bookProgress == '') {
+        alert('You must have values in each input field');
+    } else if (isNaN(bookPages) || isNaN(bookProgress)) {
+        alert('You must enter numbers for Book Pages or Pages Read');
+    } else {
+        let newBook = new Book(bookTitle, bookAuthor, bookPages, bookProgress, bookStatus);
+        bookList.unshift(newBook);
+        resetValues();
+        insertBook();
+        idNumber++
+    }
+}
+
+let titleInput = document.getElementById('book-title');
+let authorInput = document.getElementById('book-author');
+let pagesInput = document.getElementById('book-pages');
+let progressInput = document.getElementById('book-progress');
+let addBookButton = document.getElementById('add-book-button');
+let completedStatus = document.getElementById('completed-status');
+let libraryMain = document.getElementById('library-main');
+let removalButtons = document.querySelectorAll('.removal-button');
+
+let bookTitle = null;
+let bookAuthor = null;
+let bookPages = 0;
+let bookProgress = 0;
+let bookStatus = null;
+let idNumber = 0;
+
+let bookList = [];
+
+addBookButton.addEventListener('click', event => {getBook()});
+
+// playground
+
