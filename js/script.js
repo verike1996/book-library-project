@@ -67,13 +67,10 @@ function insertBook() {
 
     bookElement.appendChild(bookElementTitle);
     bookElement.appendChild(bookElementAuthor);
-    bookElement.appendChild(bookElementPages);        bookElement.appendChild(bookElementProgress);
+    bookElement.appendChild(bookElementPages);        
+    bookElement.appendChild(bookElementProgress);
     bookElement.appendChild(bookElementButton)
     libraryMain.appendChild(bookElement);
-}
-
-function test(e) {
-    console.log(e.parentNode.id);
 }
 
 function getBook() {

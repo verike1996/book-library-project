@@ -10,3 +10,11 @@
     text-align: center;
     width: 40vw;
 }
+
+.add-book-card {
+    color:orange;
+}
+
+.show-add-card {
+    background-color: red;
+}
