@@ -31,7 +31,7 @@ function resetValues() {
     completedStatus.checked = '';
 }
 
-function insertBook() {
+function addBookCard() {
     let bookElement = document.createElement("div");
     bookElement.setAttribute('class', 'library-book');
     bookElement.setAttribute('id', `${idNumber}`);
@@ -51,10 +51,16 @@ function insertBook() {
     let bookElementButton = document.createElement('button');
     bookElementButton.setAttribute('class', 'removal-button');
     bookElementButton.appendChild(document.createTextNode(`Remove Book`));
+}
+
+function insertBook() {
+    addBookCard();
 
     bookElementButton.addEventListener('click', event => {
         let parentOfBook = bookElementButton.parentNode;
-        parentOfBook.parentNode.removeChild(bookElement);
+        if (confirm('Are you sure you want to remove this book?')) {
+            parentOfBook.parentNode.removeChild(bookElement);
+        }
     });
 
     // Add a pop up that asks if thehy're sure they want to remove the book. if statements with true false
