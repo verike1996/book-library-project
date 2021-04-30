@@ -7,15 +7,26 @@
 }
 
 .library-book {
+    display: flex;
+    flex-direction: column;
     text-align: center;
     width: 40vw;
 }
 
-.add-book-card {
+.form-wrapper {
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+}
+
+.add-book-form {
+    margin: auto;
+    flex-direction: ;
     width: 400px;
     background-color: purple;
+    padding: 30px;
 }
 
 .hide-form {

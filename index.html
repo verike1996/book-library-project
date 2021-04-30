@@ -9,26 +9,27 @@
 </head>
 <body>
     <button id="new-book">New Book</button>
-    <div class="add-book-card show-form">
-        <form action="">
-            <div class="form-item-wrapper">
-                <label for="book-title">Book Title</label>
-                <input type="text" name="book-title" id="book-title">
-            </div>
-            <div class="form-item-wrapper">
-                <label for="book-author">Book Author</label>
-                <input type="text" name="book-author" id="book-author">
-            </div>
-            <div class="form-item-wrapper">
-                <label for="book-pages">Total Book Pages</label>
-                <input type="text" name="book-pages" id="book-pages">
-            </div>
-            <div class="form-item-wrapper">
-                <label for="book-progress">Total Book Pages Read</label>
-                <input type="text" name="book-progress" id="book-progress">
-            </div>
-        </form>
-        <button id="add-book-button">Add</button>
+    <div class="add-book-card form-wrapper">
+        <div class="add-book-form">
+            <form action="">
+                <div class="form-item-wrapper">
+                    <label for="book-title">Book Title</label>
+                    <input type="text" name="book-title" id="book-title">
+                </div>
+                <div class="form-item-wrapper">
+                    <label for="book-author">Book Author</label>
+                    <input type="text" name="book-author" id="book-author">
+                </div>
+                <div class="form-item-wrapper">
+                    <label for="status">Status</label>
+                    <select name="status" id="status">
+                      <option value="read">Read</option>
+                      <option value="not read">Not read</option>
+                    </select>
+                </div>
+            </form>
+            <button id="add-book-button">Add</button>
+        </div>
     </div>
     
     <div id="library-main" class="library-main">
