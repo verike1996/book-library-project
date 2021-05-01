@@ -7,7 +7,7 @@ function Book(title, author, readYet) {
 function getValues() {
     bookTitle = titleInput.value;
     bookAuthor = authorInput.value;
-    bookReadYet = bookStatus.value;
+    bookReadYet = bookStatus.options[bookStatus.selectedIndex].text;
 }
 
 // function showForm() {
@@ -23,6 +23,7 @@ function getValues() {
 function resetValues() {
     bookTitle = null;
     bookAuthor = null;   
+    bookReadYet = null;
     titleInput.value = '';
     authorInput.value = '';
 }
@@ -40,6 +41,22 @@ function insertBook() {
 
     let bookElementReadYet = document.createElement('button');
     bookElementReadYet.appendChild(document.createTextNode(`${bookList[0].readYet}`));
+
+    if (bookElementReadYet.textContent == 'Read') {
+        bookElementReadYet.style.backgroundColor = 'green';
+    } else if (bookElementReadYet.textContent == 'Not Read') {
+        bookElementReadYet.style.backgroundColor = 'red';
+    }
+
+    bookElementReadYet.addEventListener('click', event => {
+        if (event.target.textContent == 'Read') {
+            bookElementReadYet.textContent = 'Not Read';
+            bookElementReadYet.style.backgroundColor = 'red';
+        } else if (bookElementReadYet.textContent == 'Not Read') {
+            bookElementReadYet.textContent = 'Read';
+            bookElementReadYet.style.backgroundColor = 'green';
+        }
+    });
 
     let bookElementButton = document.createElement('button');
     bookElementButton.setAttribute('class', 'removal-button');
@@ -64,7 +81,7 @@ function getBook() {
     if (bookTitle == '' || bookAuthor ==  '') {
         alert('You must have values in each input field');
     } else {
-        let newBook = new Book(bookTitle, bookAuthor, bookStatus.value);
+        let newBook = new Book(bookTitle, bookAuthor, bookReadYet);
         bookList.unshift(newBook);
         resetValues();
         insertBook();
@@ -84,6 +101,7 @@ let bookAddForm = document.querySelector('.add-book-card');
 
 let bookTitle = null;
 let bookAuthor = null;
+let bookReadYet = null;
 let idNumber = 0;
 
 let bookList = [];
