@@ -10,15 +10,15 @@ function getValues() {
     bookReadYet = bookStatus.options[bookStatus.selectedIndex].text;
 }
 
-// function showForm() {
-//     bookAddForm.classList.add('show-form');
-//     bookAddForm.classList.remove('hide-form');
-// }
+function showForm() {
+    bookAddForm.classList.add('show-form');
+    bookAddForm.classList.remove('hide-form');
+}
 
-// function hideForm() {
-//     bookAddForm.classList.add('hide-form');
-//     bookAddForm.classList.remove('show-form');
-// }
+function hideForm() {
+    bookAddForm.classList.add('hide-form');
+    bookAddForm.classList.remove('show-form');
+}
 
 function resetValues() {
     bookTitle = null;
