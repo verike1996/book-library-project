@@ -28,52 +28,63 @@ function resetValues() {
     authorInput.value = '';
 }
 
+function clearDOM() {
+    libraryMain.textContent = '';
+}
+
 function insertBook() {
-    let bookElement = document.createElement("div");
-    bookElement.setAttribute('class', 'library-book');
-    bookElement.setAttribute('id', `${idNumber}`);
+    clearDOM();
+    for (let i = 0; i < bookList.length; i++) {
+        let bookElement = document.createElement("div");
+        bookElement.setAttribute('class', 'library-book');
+        bookElement.setAttribute('id', `Book${i}`);
 
-    let bookElementTitle = document.createElement('h2');
-    bookElementTitle.appendChild(document.createTextNode(`${bookList[0].title}`));
-
-    let bookElementAuthor = document.createElement('h3');
-    bookElementAuthor.appendChild(document.createTextNode(`${bookList[0].author}`));
-
-    let bookElementReadYet = document.createElement('button');
-    bookElementReadYet.appendChild(document.createTextNode(`${bookList[0].readYet}`));
-
-    if (bookElementReadYet.textContent == 'Read') {
-        bookElementReadYet.style.backgroundColor = 'green';
-    } else if (bookElementReadYet.textContent == 'Not Read') {
-        bookElementReadYet.style.backgroundColor = 'red';
+        // Need to find a way to name each book object that goes into the booklist array so you can just remove it by name by targeting it with this generated id.
+    
+        let bookElementTitle = document.createElement('h2');
+        bookElementTitle.appendChild(document.createTextNode(`${bookList[i].title}`));
+    
+        let bookElementAuthor = document.createElement('h3');
+        bookElementAuthor.appendChild(document.createTextNode(`${bookList[i].author}`));
+    
+        let bookElementReadYet = document.createElement('button');
+        bookElementReadYet.appendChild(document.createTextNode(`${bookList[i].readYet}`));
+    
+        if (bookElementReadYet.textContent == 'Read') {
+            bookElementReadYet.style.backgroundColor = 'green';
+        } else if (bookElementReadYet.textContent == 'Not Read') {
+            bookElementReadYet.style.backgroundColor = 'red';
+        }
+    
+        bookElementReadYet.addEventListener('click', event => {
+            if (event.target.textContent == 'Read') {
+                bookElementReadYet.textContent = 'Not Read';
+                bookElementReadYet.style.backgroundColor = 'red';
+            } else if (bookElementReadYet.textContent == 'Not Read') {
+                bookElementReadYet.textContent = 'Read';
+                bookElementReadYet.style.backgroundColor = 'green';
+            }
+        });
+    
+        let bookElementButton = document.createElement('button');
+        bookElementButton.setAttribute('class', 'removal-button');
+        bookElementButton.appendChild(document.createTextNode(`Remove Book`));
+    
+        bookElementButton.addEventListener('click', event => {
+            let parentOfBook = bookElementButton.parentNode;
+            if (confirm('Are you sure you want to remove this book?')) {
+                console.log(bookElement.id);
+                parentOfBook.parentNode.removeChild(bookElement);
+            }
+        });
+    
+        bookElement.appendChild(bookElementTitle);
+        bookElement.appendChild(bookElementAuthor);
+        bookElement.appendChild(bookElementReadYet);
+        bookElement.appendChild(bookElementButton)
+        libraryMain.appendChild(bookElement);
     }
 
-    bookElementReadYet.addEventListener('click', event => {
-        if (event.target.textContent == 'Read') {
-            bookElementReadYet.textContent = 'Not Read';
-            bookElementReadYet.style.backgroundColor = 'red';
-        } else if (bookElementReadYet.textContent == 'Not Read') {
-            bookElementReadYet.textContent = 'Read';
-            bookElementReadYet.style.backgroundColor = 'green';
-        }
-    });
-
-    let bookElementButton = document.createElement('button');
-    bookElementButton.setAttribute('class', 'removal-button');
-    bookElementButton.appendChild(document.createTextNode(`Remove Book`));
-
-    bookElementButton.addEventListener('click', event => {
-        let parentOfBook = bookElementButton.parentNode;
-        if (confirm('Are you sure you want to remove this book?')) {
-            parentOfBook.parentNode.removeChild(bookElement);
-        }
-    });
-
-    bookElement.appendChild(bookElementTitle);
-    bookElement.appendChild(bookElementAuthor);
-    bookElement.appendChild(bookElementReadYet);
-    bookElement.appendChild(bookElementButton)
-    libraryMain.appendChild(bookElement);
 }
 
 function getBook() {
@@ -82,10 +93,9 @@ function getBook() {
         alert('You must have values in each input field');
     } else {
         let newBook = new Book(bookTitle, bookAuthor, bookReadYet);
-        bookList.unshift(newBook);
+        bookList.push(newBook);
         resetValues();
         insertBook();
-        idNumber++
     }
 }
 
@@ -102,7 +112,6 @@ let bookAddForm = document.querySelector('.add-book-card');
 let bookTitle = null;
 let bookAuthor = null;
 let bookReadYet = null;
-let idNumber = 0;
 
 let bookList = [];
 
