@@ -57,9 +57,11 @@ function insertBook() {
         bookElementReadYet.addEventListener('click', event => {
             if (event.target.textContent == 'Read') {
                 bookElementReadYet.textContent = 'Not Read';
+                bookList[bookElement.id].readYet = 'Not Read'
                 bookElementReadYet.style.backgroundColor = 'red';
             } else if (bookElementReadYet.textContent == 'Not Read') {
                 bookElementReadYet.textContent = 'Read';
+                bookList[bookElement.id].readYet = 'Read'
                 bookElementReadYet.style.backgroundColor = 'green';
             }
         });
@@ -131,14 +133,3 @@ newBookButton.addEventListener('click', event => {
 cancelButton.addEventListener('click', event => {
     hideForm();
 })
-// playground
-
-
-let show = document.getElementById('show');
-show.addEventListener('click', event => {
-    showForm();
-});
-let hide = document.getElementById('hide')
-hide.addEventListener('click', event => {
-    hideForm();
-});
