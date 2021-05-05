@@ -3,18 +3,19 @@
 }
 
 .library-main {
-    width: 100vw;
+    margin: auto;
+    width: 90vw;
     height: 80vvh;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
 }
 
 .library-book {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     text-align: center;
-    width: 40vw;
 }
 
 .form-wrapper {
