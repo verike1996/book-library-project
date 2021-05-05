@@ -5,11 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet">
     <title>Library Tracker</title>
 </head>
 <body>
-    <button id="new-book">New Book</button>
-    <div class="add-book-card form-wrapper">
+    <div class="add-book-card form-wrapper show-form">
         <div class="add-book-form">
             <form action="">
                 <div class="form-item-wrapper">
@@ -28,9 +29,13 @@
                     </select>
                 </div>
             </form>
-            <button id="add-book-button">Add</button>
+            <div class="button-container">
+                <button id="add-book-button">Add</button>
+                <button id="cancel-book-button">Cancel</button>
+            </div>
         </div>
     </div>
+    <button id="new-book">New Book</button>
     
     <div id="library-main" class="library-main">
         <div class="library-book" id="0">

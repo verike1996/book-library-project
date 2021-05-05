@@ -109,6 +109,7 @@ let addBookButton = document.getElementById('add-book-button');
 let libraryMain = document.getElementById('library-main');
 let newBookButton = document.getElementById('new-book');
 let removalButtons = document.querySelectorAll('.removal-button');
+let cancelButton = document.getElementById('cancel-book-button');
 
 let bookAddForm = document.querySelector('.add-book-card');
 
@@ -120,11 +121,16 @@ let bookList = [];
 
 addBookButton.addEventListener('click', event => {
     getBook();
-    hideForm();
+    if (bookTitle !== '' && bookAuthor !== '') {
+        hideForm();
+    }
 });
 newBookButton.addEventListener('click', event => {
     showForm();
 });
+cancelButton.addEventListener('click', event => {
+    hideForm();
+})
 // playground
 
 
