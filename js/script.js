@@ -37,7 +37,7 @@ function insertBook() {
     for (let i = 0; i < bookList.length; i++) {
         let bookElement = document.createElement("div");
         bookElement.setAttribute('class', 'library-book');
-        bookElement.setAttribute('id', `Book${i}`);
+        bookElement.setAttribute('id', `${i}`);
 
         // Need to find a way to name each book object that goes into the booklist array so you can just remove it by name by targeting it with this generated id.
     
@@ -73,7 +73,8 @@ function insertBook() {
         bookElementButton.addEventListener('click', event => {
             let parentOfBook = bookElementButton.parentNode;
             if (confirm('Are you sure you want to remove this book?')) {
-                console.log(bookElement.id);
+                let splicedArray = bookList.splice(0 ,bookElement.id); //convert to int
+                bookList += splicedArray;
                 parentOfBook.parentNode.removeChild(bookElement);
             }
         });
