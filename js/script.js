@@ -40,9 +40,11 @@ function insertBook() {
         bookElement.setAttribute('id', `${i}`);
     
         let bookElementTitle = document.createElement('h2');
+        //add text node that says "book title:"
         bookElementTitle.appendChild(document.createTextNode(`${bookList[i].title}`));
     
         let bookElementAuthor = document.createElement('h3');
+        //add textnode that says book author:
         bookElementAuthor.appendChild(document.createTextNode(`${bookList[i].author}`));
     
         let bookElementReadYet = document.createElement('button');
