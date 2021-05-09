@@ -36,7 +36,7 @@ function insertBook() {
     clearDOM();
     for (let i = 0; i < bookList.length; i++) {
         let bookElement = document.createElement("div");
-        bookElement.setAttribute('class', 'library-book');
+        bookElement.setAttribute('class', 'library-book test-class');
         bookElement.setAttribute('id', `${i}`);
     
         let bookElementTitle = document.createElement('h2');
